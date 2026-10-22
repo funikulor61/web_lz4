@@ -21,8 +21,12 @@ function getIntervalArray1(start, end) {
 function getIntervalArray2(start,end){
     return Array.from({length: end - start + 1}, (_, index) => start + index)
 }
-console.log(getIntervalArray1(0, 100))
-console.log(getIntervalArray2(0, 100))
+
+
+// console.log(getIntervalArray1(0, 100))
+// console.log(getIntervalArray2(0, 100))
+
+
 /**
  * Returns a new array where each element is the sum of the corresponding elements
  * from two arrays. Arrays can have different lengths.
@@ -38,10 +42,10 @@ console.log(getIntervalArray2(0, 100))
  */
 function sumArrays1(arr1, arr2) {
     let res = []
-    const max_length = Math.max(arr1.length, arr2.length)
-    for(let i = 0; i < max_length; ++i){
-        const value1 = arr1[i] ?? 0
-        const value2 = arr2[i] ?? 0
+    let malen = Math.max(arr1.length, arr2.length)
+    for(let i = 0; i < malen; ++i){
+        let value1 = arr1[i] ?? 0
+        let value2 = arr2[i] ?? 0
         res.push(value1 + value2)
     }
     return res
@@ -49,8 +53,12 @@ function sumArrays1(arr1, arr2) {
 function sumArrays2(arr1, arr2){
     return Array.from({length: Math.max(arr1.length, arr2.length)}, (_, index) => (arr1[index] ?? 0) + (arr2[index] ?? 0))
 }
-console.log(sumArrays1([-1,0,1], [1,2,3,4]))
-console.log(sumArrays2([-1,0,1], [1,2,3,4]))
+
+
+// console.log(sumArrays1([-1,0,1], [1,2,3,4]))
+// console.log(sumArrays2([-1,0,1], [1,2,3,4]))
+
+
 /**
  * Returns an index of the specified element in array or -1 if element is not found.
  *
@@ -73,8 +81,12 @@ function findElement1(mas, value){
 function findElement2(mas, value) {
     return mas.indexOf(value)
 }
-console.log(findElement1([0,1,2,3,4,5], 5))
-console.log(findElement2([0,1,2,3,4,5], 5))
+
+
+// console.log(findElement1([0,1,2,3,4,5], 5))
+// console.log(findElement2([0,1,2,3,4,5], 5))
+
+
 /**
  * Returns a number of all occurrences of the specified item in an array.
  *
@@ -90,13 +102,17 @@ console.log(findElement2([0,1,2,3,4,5], 5))
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
 function findAllOccurrences(mas, item) {     
-    const countMap = mas.reduce(function (acc, current) {
+    let countMap = mas.reduce(function (acc, current) {
         acc.set(current, (acc.get(current) || 0) + 1);
         return acc;
     }, new Map());
     return countMap.get(item) || 0;
 }
-console.log(findAllOccurrences([ 0, 0, 1, 1, 1, 2 ], 1)); 
+
+
+// console.log(findAllOccurrences([ 0, 0, 1, 1, 1, 2 ], 1)); 
+
+
 function findAllOccurrence(mas, item){
     let count = 0
     for(let i = 0; i < mas.length; ++i)
@@ -105,7 +121,11 @@ function findAllOccurrence(mas, item){
         }
         return count
 }
-console.log(findAllOccurrence([ 0, 0, 1, 1, 1, 2], 1))
+
+
+// console.log(findAllOccurrence([ 0, 0, 1, 1, 1, 2], 1))
+
+
 /**
  * Removes falsy values from the specified array.
  * Falsy values: false, null, 0, "", undefined, and NaN.
@@ -121,9 +141,13 @@ console.log(findAllOccurrence([ 0, 0, 1, 1, 1, 2], 1))
 function removeFalsyValues(mas) {
     return mas.filter(Boolean)
 }
-console.log(removeFalsyValues([ 0, false, 'cat', NaN, true, '' ]))
+
+
+// console.log(removeFalsyValues([ 0, false, 'cat', NaN, true, '' ]))
+
+
 function removeFalsyValues1(mas){
-    const r = [false, null, 0, "", undefined, NaN]
+    let r = [false, null, 0, "", undefined, NaN]
     let res = []
     for(let i = 0; i < mas.length; ++i){
         let item = mas[i]
@@ -132,7 +156,11 @@ function removeFalsyValues1(mas){
     }
     return res
 }
-console.log(removeFalsyValues1([ 0, false, 'cat', NaN, true, '' ]))
+
+
+// console.log(removeFalsyValues1([ 0, false, 'cat', NaN, true, '' ]))
+
+
 /**
  * Returns an array containing the lengths of each string in a specified array of strings.
  *
@@ -146,7 +174,11 @@ console.log(removeFalsyValues1([ 0, false, 'cat', NaN, true, '' ]))
 function getStringsLength(mas) {
     return Array.from({length: mas.length}, (_, index) => mas[index].length)
 }
-console.log(getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]))
+
+
+// console.log(getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]))
+
+
 function getStringsLength1(mas){
     let r = []
     for(let i = 0; i < mas.length; ++i){
@@ -154,10 +186,14 @@ function getStringsLength1(mas){
     } 
     return r 
 }
-console.log(getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]))
+
+
+// console.log(getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]))
+
+
 /**
- * Returns the average of all items in the specified array of numbers.
- * The result should be rounded to two decimal places.
+ * Returns the average of all items in the specified array of nums.
+ * The res should be rounded to two decimal places.
  *
  * @param {number[]} mas - The input array
  * @return {number} - The average of all items
@@ -179,13 +215,22 @@ function getAverage(mas) {
     let average = sum / mas.length
     return Math.round(average * 100) / 100
 }
-console.log(getAverage([1, 10, 100, 1000]))
+
+
+// console.log(getAverage([1, 10, 100, 1000]))
+
+
 function getAverage1(mas){
-    if (mas.length === 0) 
+    if (mas.length === 0){
         return 0
+    }
     return Math.round((mas.reduce((acc, val) => acc + val, 0) / mas.length) * 100) / 100
 }
-console.log(getAverage1([2, 3, 3]))
+
+
+// console.log(getAverage1([2, 3, 3]))
+
+
 /**
  * Checks if all strings in an array have the same length.
  *
@@ -204,13 +249,22 @@ function isSameLength(mas) {
     }
     return true
 }
-console.log(isSameLength(['orange', 'banana', 'cherry']))
+
+
+// console.log(isSameLength(['orange', 'banana', 'cherry']))
+
+
 function isSameLength1(mas){
     let len = mas[0].length 
     return mas.every(item => item.length === len)
 }
-console.log(isSameLength1(['orange', 'banana', 'cherry']))
+
+
+// console.log(isSameLength1(['orange', 'banana', 'cherry']))
+
+
 /**
+ * 
  * Checks if there are elements in the array where the value is equal to its index.
  *
  * @param {number[]} mas - The array of elements to be checked.
@@ -224,7 +278,11 @@ console.log(isSameLength1(['orange', 'banana', 'cherry']))
 function isValueEqualsIndex(mas) {
     return mas.some((value, index) => value === index);
 }
-console.log(isValueEqualsIndex([10,20,30]))
+
+
+// console.log(isValueEqualsIndex([10,20,30]))
+
+
 function isValueEqualsIndex1(mas) {
     for(let i = 0; i < mas.length; ++i){
         if(mas[i] === i){
@@ -233,7 +291,11 @@ function isValueEqualsIndex1(mas) {
     }
     return false
 }
-console.log(isValueEqualsIndex1([10,20,30]))
+
+
+// console.log(isValueEqualsIndex1([10,20,30]))
+
+
 /**
  * Inserts the item into specified array at specified index.
  *
@@ -247,23 +309,31 @@ console.log(isValueEqualsIndex1([10,20,30]))
  *    insertItem([ 1, 'b', 'c'], 'x', 0) => [ 'x', 1, 'b', 'c' ]
  */
 function insertItem(mas, item, index) {
-    let result = [...mas]
-    result.splice(index, 0, item)
-    return result
+    let res = [...mas]
+    res.splice(index, 0, item)
+    return res
 }
-console.log(insertItem([1, 3, 4, 5], 2, 1))
+
+
+// console.log(insertItem([1, 3, 4, 5], 2, 1))
+
+
 function insertItem1(mas, item, index) {
-    let result = []
+    let res = []
     for (let i = 0; i < index; ++i) {
-        result[i] = mas[i]
+        res[i] = mas[i]
     }
-    result[index] = item
+    res[index] = item
     for (let i = index; i < mas.length; i++) {
-        result[i + 1] = mas[i]
+        res[i + 1] = mas[i]
     }
-    return result
+    return res
 }
-console.log(insertItem1([1, 'b', 'c'], 'x', 0))
+
+
+// console.log(insertItem1([1, 'b', 'c'], 'x', 0))
+
+
 /**
  * Returns the n first items of the specified array.
  *
@@ -283,11 +353,19 @@ function getHead(mas, n) {
     }
     return res
 }
-console.log(getHead(['a', 'b', 'c', 'd'], 0))
+
+
+// console.log(getHead(['a', 'b', 'c', 'd'], 0))
+
+
 function getHead1(mas, n){
     return mas.slice(0, n);
 }
-console.log(getHead1(['a', 'b', 'c', 'd'], 3))
+
+
+// console.log(getHead1(['a', 'b', 'c', 'd'], 3))
+
+
 /**
  * Returns the n last items of the specified array.
  *
@@ -302,17 +380,25 @@ console.log(getHead1(['a', 'b', 'c', 'd'], 3))
  */
 function getTail(mas, n) {
     let res = []
-    const start = mas.length - n 
+    let start = mas.length - n 
     for (let i = start; i < mas.length; i++) {
         res.push(mas[i])
     }
     return res
 }
-console.log(getTail([1,2,3,4,5], 2))
+
+
+// console.log(getTail([1,2,3,4,5], 2))
+
+
 function getTail1(mas, n){
     return mas.slice(-n)
 }
-console.log(getTail1(['a', 'b', 'c', 'd'], 3))
+
+
+// console.log(getTail1(['a', 'b', 'c', 'd'], 3))
+
+
 /**
  * Returns the doubled array - elements of the specified array
  * are repeated twice using original order.
@@ -328,18 +414,26 @@ console.log(getTail1(['a', 'b', 'c', 'd'], 3))
 function doubleArray(mas) {
     return mas.concat(mas)
 }
-console.log(doubleArray(['Ace', 10, true]))
+
+
+// console.log(doubleArray(['Ace', 10, true]))
+
+
 function doubleArray1(mas) {
-    let result = []
+    let res = []
     for (let i = 0; i < mas.length; i++) {
-        result[i] = mas[i]
+        res[i] = mas[i]
     }
     for (let i = 0; i < mas.length; i++) {
-        result[mas.length + i] = mas[i]
+        res[mas.length + i] = mas[i]
     }
-    return result
+    return res
 }
-console.log(doubleArray1([0, 1, 2, 3, 4, 5]))
+
+
+// console.log(doubleArray1([0, 1, 2, 3, 4, 5]))
+
+
 /**
  * Concatenates all elements from specified array into single string with ',' delimiter.
  *
@@ -361,11 +455,19 @@ function toStringList(mas) {
     }
     return res
 }
-console.log(toStringList([0, false, 'cat', NaN, true, '']))
+
+
+// console.log(toStringList([0, false, 'cat', NaN, true, '']))
+
+
 function toStringList1(mas){
     return mas.join(',')
 }
-console.log(toStringList1([['rock', 'paper', 'scissors']]))
+
+
+// console.log(toStringList1([['rock', 'paper', 'scissors']]))
+
+
 /**
  * Returns array containing only unique values from the specified array.
  *
@@ -381,30 +483,38 @@ console.log(toStringList1([['rock', 'paper', 'scissors']]))
 function distinct(mas) {
     return mas.filter((item, index) => mas.indexOf(item) === index)
 }
-console.log(distinct([ 1, 2, 3, 3, 2, 1 ]))
+
+
+// console.log(distinct([ 1, 2, 3, 3, 2, 1 ]))
+
+
 function distinct1(mas){
-    let result = []
+    let res = []
     for (let i = 0; i < mas.length; i++) {
         let found = false
-        for (let j = 0; j < result.length; j++) {
-            if (result[j] === mas[i]) {
+        for (let j = 0; j < res.length; j++) {
+            if (res[j] === mas[i]) {
                 found = true
                 break
             }
         }
         if (!found) {
-            result.push(mas[i])
+            res.push(mas[i])
         }
     }
-    return result
+    return res
 }
-console.log(distinct1([ 1, 1, 2, 2, 3, 3, 4, 4]))
+
+
+// console.log(distinct1([ 1, 1, 2, 2, 3, 3, 4, 4]))
+
+
 /**
- * Creates an n-dimensional array and fills it with zeros.
+ * Creates an n-dimensional array and fills it with zer.
  *
  * @param {number} n - Depth of outter array (n > 0).
  * @param {number} size - Length of all arrays (size > 0).
- * @return {any[]} - The n-dimensional array filled with zeros.
+ * @return {any[]} - The n-dimensional array filled with zer.
  *
  * @example
  *    createNDimensionalArray(2, 3) => [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -414,25 +524,33 @@ console.log(distinct1([ 1, 1, 2, 2, 3, 3, 4, 4]))
  */
 function createNDimensionalArray(n, size) {
     if (n === 1) {
-        let zeros = []
+        let zer = []
         for (let i = 0; i < size; i++) {
-            zeros[i] = 0
+            zer[i] = 0
         }
-        return zeros
+        return zer
     }
-    let result = []
+    let res = []
     for (let i = 0; i < size; i++) {
-        result[i] = createNDimensionalArray(n - 1, size)
+        res[i] = createNDimensionalArray(n - 1, size)
     }
-    return result
+    return res
 }
-console.log(createNDimensionalArray(2,3))
+
+
+// console.log(createNDimensionalArray(2,3))
+
+
 function createNDimensionalArray1(n, size){
     return Array.from({ length: n - 1 }).reduce(
         (acc) => Array.from({ length: size }, () => Array.from({ length: size }, () => structuredClone(acc))),
         Array(size).fill(0))
 }
-console.log(createNDimensionalArray1(4,2))
+
+
+// console.log(createNDimensionalArray1(4,2))
+
+
 /**
  * Flattens a nested array into a single-level array.
  *
@@ -447,23 +565,31 @@ console.log(createNDimensionalArray1(4,2))
 function flattenArray(nestedArray) {
     return nestedArray.flat(Infinity)
 }
-console.log(flattenArray([1, [2, [3, 4], 5], 6]))
+
+
+// console.log(flattenArray([1, [2, [3, 4], 5], 6]))
+
+
 function flattenArray1(nestedArray){
-    let result = []
+    let res = []
     for (let i = 0; i < nestedArray.length; i++) {
-        const item = nestedArray[i]
+        let item = nestedArray[i]
         if (item !== null && typeof item === 'object' && typeof item.length === 'number') {
-            const inner = flattenArray(item)
-            for (let j = 0; j < inner.length; j++) {
-                result[result.length] = inner[j]
+            let ier = flattenArray(item)
+            for (let j = 0; j < ier.length; j++) {
+                res[res.length] = ier[j]
             }
         } else {
-            result[result.length] = item
+            res[res.length] = item
         }
     }
-    return result
+    return res
 }
-console.log(flattenArray1(['a', ['b', ['c', 'd'], 'e'], 'f']))
+
+
+// console.log(flattenArray1(['a', ['b', ['c', 'd'], 'e'], 'f']))
+
+
 /**
  * Projects each element of the specified array to a sequence
  * and flattens the resulting sequences into one array.
@@ -480,18 +606,26 @@ console.log(flattenArray1(['a', ['b', ['c', 'd'], 'e'], 'f']))
 function selectMany(mas, childrenSelector) {
     return mas.map(childrenSelector).flat()
 }
-console.log(selectMany([[1, 2], [3, 4], [5, 6]], (x) => x))
+
+
+// console.log(selectMany([[1, 2], [3, 4], [5, 6]], (x) => x))
+
+
 function selectMany1(mas, childrenSelector){
-    let result = []
+    let res = []
     for (let i = 0; i < mas.length; i++) {
-        const children = childrenSelector(mas[i])
+        let children = childrenSelector(mas[i])
         for (let j = 0; j < children.length; j++) {
-            result.push(children[j])
+            res.push(children[j])
         }
     }
-    return result
+    return res
 }
-console.log(selectMany1(['one','two','three'], (x) => x.split('')))
+
+
+// console.log(selectMany1(['one','two','three'], (x) => x.split('')))
+
+
 /**
  * Every month, you record your income and expenses.
  * Expenses may be greater than income.
@@ -508,7 +642,11 @@ console.log(selectMany1(['one','two','three'], (x) => x.split('')))
 function calculateBalance(mas) {
     return mas.reduce((balance, [income, expense]) => balance + income - expense, 0)
 }
-console.log(calculateBalance([ [ 10, 8 ], [ 5, 1 ] ]))
+
+
+// console.log(calculateBalance([ [ 10, 8 ], [ 5, 1 ] ]))
+
+
 function calculateBalance1(mas){
     let balance = 0
     for (let i = 0; i < mas.length; i++) {
@@ -516,7 +654,11 @@ function calculateBalance1(mas){
     }
     return balance
 }
-console.log(calculateBalance1([ [ 10, 8 ], [ 1, 5 ] ]))
+
+
+// console.log(calculateBalance1([ [ 10, 8 ], [ 1, 5 ] ]))
+
+
 /**
  * Breaks an array into chunks of the specified size.
  *
@@ -530,29 +672,37 @@ console.log(calculateBalance1([ [ 10, 8 ], [ 1, 5 ] ]))
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
 function createChunks(mas, chunkSize) {
-    let result = []
-    let currentChunk = []
+    let res = []
+    let curren = []
     for (let i = 0; i < mas.length; i++) {
-        currentChunk.push(mas[i])
-        if (currentChunk.length === chunkSize || i === mas.length - 1) {
-            result.push(currentChunk)
-            currentChunk = []
+        curren.push(mas[i])
+        if (curren.length === chunkSize || i === mas.length - 1) {
+            res.push(curren)
+            curren = []
         }
     }
-    return result
+    return res
 }
-console.log(createChunks([1, 2, 3, 4, 5, 6, 7], 3))
+
+
+// console.log(createChunks([1, 2, 3, 4, 5, 6, 7], 3))
+
+
 function createChunks1(mas, chunkSize){
     return Array.from(
         { length: Math.ceil(mas.length / chunkSize) },
         (_, i) => mas.slice(i * chunkSize, (i + 1) * chunkSize))
 }
-console.log(createChunks1(['a', 'b', 'c', 'd', 'e'], 2))
+
+
+// console.log(createChunks1(['a', 'b', 'c', 'd', 'e'], 2))
+
+
 /**
- * Generates an array of odd numbers of the specified length.
+ * Generates an array of odd nums of the specified length.
  *
  * @param {number} len - The length of an array.
- * @return {number[]} - An array of odd numbers.
+ * @return {number[]} - An array of odd nums.
  *
  * @example
  *    generateOdds(0) => []
@@ -573,11 +723,19 @@ function generateOdds(len) {
     }
     return res
 }
-console.log(generateOdds(5))
+
+
+// console.log(generateOdds(5))
+
+
 function generateOdds1(len){
     return Array.from({length: len}, (_, index) => index * 2 + 1)
 }
-console.log(generateOdds1(5))
+
+
+// console.log(generateOdds1(5))
+
+
 /**
  * Returns an element from the multidimensional array by the specified indices.
  *
@@ -593,7 +751,11 @@ console.log(generateOdds1(5))
 function getElementByIndices(mas, indices) {
     return indices.reduce((current, index) => current[index], mas)
 }
-console.log(getElementByIndices([[1, 2], [3, 4], [5, 6]], [0,0]))
+
+
+// console.log(getElementByIndices([[1, 2], [3, 4], [5, 6]], [0,0]))
+
+
 function getElementByIndices1(mas, indices){
     let current = mas
     for (let i = 0; i < indices.length; i++) {
@@ -601,7 +763,11 @@ function getElementByIndices1(mas, indices){
     }
     return current
 }
-console.log(getElementByIndices1([[[ 1, 2, 3]]], [ 0, 0, 1 ]))
+
+
+// console.log(getElementByIndices1([[[ 1, 2, 3]]], [ 0, 0, 1 ]))
+
+
 /**
  * Returns the number of all falsy values in the specified array.
  *
@@ -617,17 +783,25 @@ console.log(getElementByIndices1([[[ 1, 2, 3]]], [ 0, 0, 1 ]))
 function getFalsyValuesCount(mas){
     return mas.filter(item => !item).length
 }
-console.log(getFalsyValuesCount([ -1, 'false', null, 0 ]))
+
+
+// console.log(getFalsyValuesCount([ -1, 'false', null, 0 ]))
+
+
 function getFalsyValuesCount1(mas){
     let count = 0
-    for (const item of mas) {
+    for (let item of mas) {
         if (!item) {
             count++
         }
     }
     return count
 }
-console.log(getFalsyValuesCount1([ null, undefined, NaN, false, 0, '' ]))
+
+
+// console.log(getFalsyValuesCount1([ null, undefined, NaN, false, 0, '' ]))
+
+
 /**
  * Creates an identity matrix of the specified size.
  *
@@ -651,11 +825,15 @@ function getIdentityMatrix(n){
         Array.from({ length: n }, (_, j) => (i === j ? 1 : 0))
     )
 }
-console.log(getIdentityMatrix(1))
+
+
+// console.log(getIdentityMatrix(1))
+
+
 function getIdentityMatrix1(n){
     let matrix = []
     for (let i = 0; i < n; i++) {
-        const row = []
+        let row = []
         for (let j = 0; j < n; j++) {
             if (i === j) {
                 row[row.length] = 1
@@ -667,11 +845,15 @@ function getIdentityMatrix1(n){
     }    
     return matrix
 }
-console.log(getIdentityMatrix1(5))
+
+
+// console.log(getIdentityMatrix1(5))
+
+
 /**
  * Returns an array containing indices of odd elements in the input array.
  *
- * @param {number[]} numbers - The array of numbers.
+ * @param {number[]} nums - The array of nums.
  * @return {number[]} - An array containing indices of odd elements.
  *
  * @example
@@ -679,27 +861,35 @@ console.log(getIdentityMatrix1(5))
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(numbers) {
-     return numbers.reduce((indices, value, index) => {
+function getIndicesOfOddNumbers(nums) {
+     return nums.reduce((indices, value, index) => {
         if (value % 2 !== 0) {
             indices.push(index)
         }
         return indices
     }, [])
 }
-console.log(getIndicesOfOddNumbers([1, 2, 3, 4, 5]))
-function getIndicesOfOddNumbers1(numbers){
-    let result = []
-    for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] % 2 !== 0) {
-            result.push(i)
+
+
+// console.log(getIndicesOfOddNumbers([1, 2, 3, 4, 5]))
+
+
+function getIndicesOfOddNumbers1(nums){
+    let res = []
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] % 2 !== 0) {
+            res.push(i)
         }
     }
-    return result
+    return res
 }
-console.log(getIndicesOfOddNumbers1([11, 22, 33, 44, 55]))
+
+
+// console.log(getIndicesOfOddNumbers1([11, 22, 33, 44, 55]))
+
+
 /**
- * Returns the array of RGB Hex strings from the specified array of numbers.
+ * Returns the array of RGB Hex strings from the specified array of nums.
  *
  * @param {number[]} mas - The input array.
  * @return {string[]} - The array of RGB Hex strings.
@@ -714,16 +904,24 @@ function getHexRGBValues(mas) {
         return '#' + hex
     })
 }
-console.log(getHexRGBValues([ 0, 255, 16777215]))
+
+
+// console.log(getHexRGBValues([ 0, 255, 16777215]))
+
+
 function getHexRGBValues1(mas){
-    let result = []
+    let res = []
     for (let i = 0; i < mas.length; i++) {
-        const hex = mas[i].toString(16).toUpperCase().padStart(6, '0')
-        result.push('#' + hex)
+        let hex = mas[i].toString(16).toUpperCase().padStart(6, '0')
+        res.push('#' + hex)
     }
-    return result
+    return res
 }
-console.log(getHexRGBValues1([ 0, 255, 16777215]))
+
+
+// console.log(getHexRGBValues1([ 0, 255, 16777215]))
+
+
 /**
  * Returns the n largest values from the specified array
  *
@@ -741,13 +939,17 @@ console.log(getHexRGBValues1([ 0, 255, 16777215]))
 function getMaxItems(mas, n) {
     return mas.slice().sort((a, b) => b - a).slice(0, n)
 }
-console.log(getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3))
+
+
+// console.log(getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3))
+
+
 function getMaxItems1(mas, n){
     let copy = []
     for (let i = 0; i < mas.length; i++) {
         copy[i] = mas[i]
     }
-    let result = []
+    let res = []
     let limit = n < copy.length ? n : copy.length
     for (let k = 0; k < limit; k++) {
         let maxIndex = 0
@@ -756,15 +958,19 @@ function getMaxItems1(mas, n){
                 maxIndex = i
             }
         }
-        result.push(copy[maxIndex])
+        res.push(copy[maxIndex])
         for (let i = maxIndex; i < copy.length - 1; i++) {
             copy[i] = copy[i + 1]
         }
         copy.length = copy.length - 1
     }
-    return result
+    return res
 }
-console.log(getMaxItems1([ 10, 10, 10, 10 ], 3))
+
+
+// console.log(getMaxItems1([ 10, 10, 10, 10 ], 3))
+
+
 /**
  * Finds and returns an array containing only the common elements found in two arrays.
  *
@@ -780,17 +986,25 @@ console.log(getMaxItems1([ 10, 10, 10, 10 ], 3))
 function findCommonElements(arr1, arr2) {
     return arr1.filter(item => arr2.includes(item))
 }
-console.log(findCommonElements([1, 2, 3], [2, 3, 4]))
+
+
+// console.log(findCommonElements([1, 2, 3], [2, 3, 4]))
+
+
 function findCommonElements1(arr1, arr2){
-    let result = []
-    for (const item of arr1) {
+    let res = []
+    for (let item of arr1) {
         if (arr2.includes(item)) {
-            result.push(item)
+            res.push(item)
         }
     }
-    return result
+    return res
 }
-console.log(findCommonElements1(['a', 'b', 'c'], ['b', 'c', 'd']))
+
+
+// console.log(findCommonElements1(['a', 'b', 'c'], ['b', 'c', 'd']))
+
+
 /**
  * Finds the length of the longest increasing and uninterrupted subsequence of a given array of integers.
  *
@@ -803,7 +1017,9 @@ console.log(findCommonElements1(['a', 'b', 'c'], ['b', 'c', 'd']))
  *    findLongestIncreasingSubsequence([50, 3, 10, 7, 40, 80]) => longest is [7, 40, 80] => 3
  */
 function findLongestIncreasingSubsequence(nums) {
-    if (nums.length === 0) return 0
+    if (nums.length === 0) {
+        return 0
+    }
     let maxLength = 1
     let currentLength = 1
     for (let i = 1; i < nums.length; i++) {
@@ -818,18 +1034,28 @@ function findLongestIncreasingSubsequence(nums) {
     }
     return maxLength
 }
-console.log(findLongestIncreasingSubsequence([10, 22, 9, 33, 21, 50, 41, 60, 80]))
+
+
+// console.log(findLongestIncreasingSubsequence([10, 22, 9, 33, 21, 50, 41, 60, 80]))
+
+
 function findLongestIncreasingSubsequence1(nums){
-    if (nums.length === 0) return 0
+    if (nums.length === 0){
+        return 0
+    }
     let maxLength = 1
     nums.reduce((currentLength, value, i) => {
-        const len = i > 0 && value > nums[i - 1] ? currentLength + 1 : 1
+        let len = i > 0 && value > nums[i - 1] ? currentLength + 1 : 1
         if (len > maxLength) maxLength = len
         return len
     }, 1)
     return maxLength
 }
-console.log(findLongestIncreasingSubsequence1([3, 10, 2, 1, 20]))
+
+
+// console.log(findLongestIncreasingSubsequence1([3, 10, 2, 1, 20]))
+
+
 /**
  * Propagates every item in sequence its position times
  * Returns an array that consists of: one first item, two second items, three third items etc.
@@ -847,17 +1073,25 @@ console.log(findLongestIncreasingSubsequence1([3, 10, 2, 1, 20]))
 function propagateItemsByPositionIndex(mas) {  
     return mas.flatMap((item, index) => Array(index + 1).fill(item))
 }
-console.log(propagateItemsByPositionIndex([ 'a', 'b', 'c', null ]))
+
+
+// console.log(propagateItemsByPositionIndex([ 'a', 'b', 'c', null ]))
+
+
 function propagateItemsByPositionIndex1(mas){
-    let result = []
+    let res = []
     for (let i = 0; i < mas.length; i++) {
         for (let j = 0; j <= i; j++) {
-            result.push(mas[i])
+            res.push(mas[i])
         }
     }
-    return result
+    return res
 }
-console.log(propagateItemsByPositionIndex1([ 1,2,3,4,5 ]))
+
+
+// console.log(propagateItemsByPositionIndex1([ 1,2,3,4,5 ]))
+
+
 /**
  * Shifts an array by n positions. If n is negative, the array is shifted to the left;
  * if positive, it is shifted to the right.
@@ -872,22 +1106,34 @@ console.log(propagateItemsByPositionIndex1([ 1,2,3,4,5 ]))
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
 function shiftArray(mas, n) {
-    if (mas.length === 0) return []
+    if (mas.length === 0) {
+        return []
+    }
     let shift = ((n % mas.length) + mas.length) % mas.length
     return mas.slice(mas.length - shift).concat(mas.slice(0, mas.length - shift))
 }
-console.log(shiftArray([1, 2, 3, 4, 5], 2))
+
+
+// console.log(shiftArray([1, 2, 3, 4, 5], 2))
+
+
 function shiftArray1(mas, n){
     let len = mas.length
-    if (len === 0) return []
-    let shift = ((n % len) + len) % len
-    let result = []
-    for (let i = 0; i < len; i++) {
-        result[i] = mas[(i - shift + len) % len]
+    if (len === 0) {
+        return []
     }
-    return result
+    let shift = ((n % len) + len) % len
+    let res = []
+    for (let i = 0; i < len; i++) {
+        res[i] = mas[(i - shift + len) % len]
+    }
+    return res
 }
-console.log(shiftArray1(['a', 'b', 'c', 'd'], -1))
+
+
+// console.log(shiftArray1(['a', 'b', 'c', 'd'], -1))
+
+
 /**
  * Sorts digit names.
  *
@@ -902,28 +1148,36 @@ console.log(shiftArray1(['a', 'b', 'c', 'd'], -1))
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(mas) {
-    const order = ['zero', 'one', 'two', 'three', 'four',
+    let order = ['zero', 'one', 'two', 'three', 'four',
                    'five', 'six', 'seven', 'eight', 'nine']
     return mas.slice().sort((a, b) => order.indexOf(a) - order.indexOf(b))
 }
-console.log(sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]))
+
+
+// console.log(sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]))
+
+
 function sortDigitNamesByNumericOrder1(mas){
-    const order = ['zero', 'one', 'two', 'three', 'four',
+    let order = ['zero', 'one', 'two', 'three', 'four',
                    'five', 'six', 'seven', 'eight', 'nine']
     let counts = {}
     for (let i = 0; i < mas.length; i++) {
         counts[mas[i]] = (counts[mas[i]] || 0) + 1
     }
-    let result = [];
+    let res = [];
     for (let i = 0; i < order.length; i++) {
         let count = counts[order[i]] || 0
         for (let j = 0; j < count; j++) {
-            result.push(order[i])
+            res.push(order[i])
         }
     }
-    return result
+    return res
 }
-console.log(sortDigitNamesByNumericOrder1([ 'one','one','one','zero' ]))
+
+
+// console.log(sortDigitNamesByNumericOrder1([ 'one','one','one','zero' ]))
+
+
 /**
  * Swaps the head and tail of the specified array:
  * the head (first half) of array move to the end, the tail (last half) move to the start.
@@ -950,20 +1204,26 @@ function swapHeadAndTail(mas) {
     let tail = mas.slice(mas.length - mid)
     return tail.concat(middle, head)
 }
-console.log(swapHeadAndTail([ 1, 2, 3, 4, 5, 6, 7, 8 ]))
+
+
+// console.log(swapHeadAndTail([ 1, 2, 3, 4, 5, 6, 7, 8 ]))
+
+
 function swapHeadAndTail1(mas){
     let len = mas.length
     let mid = Math.floor(len / 2)
-    let result = []
+    let res = []
     for (let i = len - mid; i < len; i++) {
-        result[result.length] = mas[i]
+        res[res.length] = mas[i]
     }
     for (let i = mid; i < len - mid; i++) {
-        result[result.length] = mas[i]
+        res[res.length] = mas[i]
     }
     for (let i = 0; i < mid; i++) {
-        result[result.length] = mas[i]
+        res[res.length] = mas[i]
     }
-    return result
+    return res
 }
-console.log(swapHeadAndTail1([ 1, 2, 3, 4, 5, 6, 7, 8 ]))
+
+
+// console.log(swapHeadAndTail1([ 1, 2, 3, 4, 5, 6, 7, 8 ]))
